@@ -1,0 +1,17 @@
+[Unit]
+Description=Tor for Ayaka
+StartLimitIntervalSec=15min
+StartLimitBurst=3
+
+[Service]
+Type=simple
+TimeoutStopSec=30s
+ExecCondition="%h/ayaka-telegram-bot/venv/bin/python" -B "%h/ayaka-telegram-bot/ayakactl.py" tor-required
+ExecStart="%h/ayaka-telegram-bot/venv/bin/python" -B "%h/ayaka-telegram-bot/ayakactl.py" serve-tor
+Restart=on-failure
+RestartSec=35s
+UMask=0077
+StandardOutput=null
+StandardError=null
+KillMode=mixed
+WorkingDirectory=%h/ayaka-telegram-bot

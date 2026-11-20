@@ -1,0 +1,23 @@
+[Unit]
+Description=Ayaka Telegram bot
+Wants=ayaka-tor.service
+After=ayaka-tor.service
+StartLimitIntervalSec=15min
+StartLimitBurst=3
+
+[Service]
+Type=notify
+NotifyAccess=main
+TimeoutStartSec=150s
+TimeoutStopSec=210s
+ExecStart="%h/ayaka-telegram-bot/venv/bin/python" -B "%h/ayaka-telegram-bot/main.py" --release
+Restart=on-failure
+RestartSec=35s
+UMask=0077
+StandardOutput=null
+StandardError=null
+KillMode=mixed
+WorkingDirectory=%h/ayaka-telegram-bot
+
+[Install]
+WantedBy=default.target

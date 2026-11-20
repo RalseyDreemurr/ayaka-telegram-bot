@@ -1,0 +1,10 @@
+# Пример. Перенесите настройки в закрытый пользовательский torrc.
+SocksPort 127.0.0.1:9050
+
+# Для отдельного экземпляра задайте абсолютный путь к закрытому каталогу.
+# DataDirectory /home/YOUR_USER/.local/share/tor-ayaka
+
+# При необходимости мостов поместите их строки только в свой закрытый torrc.
+# Проверьте, где в вашей системе установлен obfs4proxy.
+# UseBridges 1
+# ClientTransportPlugin obfs4 exec /usr/bin/obfs4proxy
